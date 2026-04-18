@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - SGIPC Website</title>
+  <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+  
+  <main>
+    <section class="register-container">
+      <div class="register-box">
+        <h2>Join SGIPC</h2>
+        <p class="register-subtitle">Create your account to get started</p>
+        
+        <form class="register-form">
+          <div class="form-row">
+                <div class="form-group">
+            <label for="roll">Roll Number</label>
+            <input type="roll" id="roll" name="roll" placeholder="Your roll number">
+          </div>
+                      <div class="form-group">
+              <label for="dept">Department</label>
+              <input type="dept" id="dept" name="dept" required placeholder="Your department">
+            </div>
+            <div class="form-group">
+              <label for="firstname">First Name</label>
+              <input type="text" id="firstname" name="firstname" required placeholder="Your first name">
+            </div>
+
+            <div class="form-group">
+              <label for="lastname">Last Name</label>
+              <input type="text" id="lastname" name="lastname" required placeholder="Your last name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Create a strong password">
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+          </div>
+
+          <div class="form-options">
+            <label class="accept-terms">
+              <input type="checkbox" name="terms" required>
+              <span>I agree to the <a href="#">Terms & Conditions</a></span>
+            </label>
+          </div>
+
+          <button type="submit" class="register-submit-btn">Create Account</button>
+        </form>
+
+        <div class="divider">
+          <span>or</span>
+        </div>
+
+       
+        <p class="login-link">
+          Already have an account? <a href="login.html">Log in here</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  
+
+</body>
+</html>

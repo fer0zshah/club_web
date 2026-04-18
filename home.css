@@ -29,7 +29,7 @@ body {
 }
 
 .logo-image {
-  height: 60px; /* Adjust this value to scale your logo appropriately */
+  height: 60px; /* Adjust this value to scale logo appropriately */
   width: auto;
   object-fit: contain;
 }
@@ -273,5 +273,76 @@ transition: all 0.3s ease-in-out;
 @media (min-width: 901px) {
   .hamburger-menu {
     display: none !important;
+  }
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+  /* Replace with the path to your group photo */
+  background-image: 
+    linear-gradient(rgba(6, 8, 20, 0.7), rgba(6, 8, 20, 0.7)), /* Dark overlay */
+    url('bg.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Height is screen height minus header height (approx 75px) */
+  height: calc(100vh - 75px); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius:10 px; /* To match the rounded corners in your image */
+  margin: 0 20px; /* Small gap on the sides */
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.hero-content h1 {
+  color: #ffffff;
+  font-size: 3rem; /* Adjust based on your preference */
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero-content .highlight {
+  font-size: 4.5rem; /* Makes 'SGIPC' larger */
+}
+
+.hero-register-btn {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent background */
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px); /* Adds a nice frosted glass effect */
+}
+
+.hero-register-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: #ffffff;
+}
+
+/* Make it responsive for smaller screens */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content .highlight {
+    font-size: 3.5rem;
+  }
+  .hero {
+    margin: 0 10px;
   }
 }
