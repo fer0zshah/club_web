@@ -1,0 +1,277 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #060814; 
+}
+
+/* Header Container */
+.navbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #060814;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+}
+
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 60px; /* Adjust this value to scale your logo appropriately */
+  width: auto;
+  object-fit: contain;
+}
+
+/* Middle Navigation Links */
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #e0e0e0;
+  font-size: 20px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+transition: all 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+
+  color: #efeee4; 
+  
+ 
+  text-shadow: 
+    0 -1px 3px #ffea00,
+    0 -3px 8px #ff9d00,
+    0 -6px 15px #ff2a00,
+    0 -10px 25px #b30000;
+}
+.dropdown-arrow {
+  font-size: 15px;
+  color: #888;
+}
+
+/* Right Action Section */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Icons */
+.icon {
+  width: 20px;
+  height: 20px;
+  color:#db6811
+}
+
+/* Log In Link */
+.login-btn {
+  text-decoration: none;
+  color: #e0e0e0;
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.login-btn:hover {
+   color: #efeee4; 
+  
+ 
+  text-shadow: 
+    0 -1px 3px #ffea00,
+    0 -3px 8px #ff9d00,
+    0 -6px 15px #ff2a00,
+    0 -10px 25px #b30000;
+}
+
+/* Register Button */
+.register-btn {
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.register-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: #e0e0e0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: #ffffff;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  gap: 5px;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.hamburger-menu span {
+  width: 25px;
+  height: 2.5px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu:hover span {
+  background-color: #ffffff;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile & Tablet Responsive - Half Screen Support */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .hamburger-menu {
+    display: flex !important;
+    order: 2;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #060814;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    z-index: 1000;
+    order: 3;
+  }
+
+  .nav-links.active {
+    max-height: 500px;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 20px 40px;
+  }
+
+  .nav-links li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-links a {
+    font-size: 18px;
+  }
+
+  .nav-actions {
+    width: 100%;
+    order: 4;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 15px;
+    justify-content: flex-end;
+  }
+
+  .login-btn span,
+  .register-btn span {
+    display: none;
+  }
+
+  .login-btn,
+  .register-btn {
+    font-size: 0;
+    gap: 0;
+  }
+
+  .login-btn svg,
+  .register-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .register-btn {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    padding: 6px;
+    border-radius: 50%;
+  }
+
+  .register-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .logo-image {
+    height: 50px;
+  }
+}
+
+/* Large Desktop Only */
+@media (min-width: 901px) {
+  .hamburger-menu {
+    display: none !important;
+  }
+}
