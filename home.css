@@ -346,3 +346,363 @@ transition: all 0.3s ease-in-out;
     margin: 0 10px;
   }
 }
+
+
+
+
+
+
+/* ================= MAIN LAYOUT ================= */
+.main-content {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px; /* Space between Contests and Workshops sections */
+}
+
+/* ================= SECTION HEADINGS ================= */
+.section-title-wrapper {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.section-title {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* The fire underline beneath section titles */
+.fire-underline {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(to right, #ff2a00, #ffea00);
+  border-radius: 2px;
+}
+
+/* ================= GRID LAYOUT ================= */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* ================= CARD STYLES ================= */
+.sgipc-card {
+  background-color: #0c1021; /* Slightly lighter than the #060814 main background */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* The Fiery Hover Effect for Cards */
+.sgipc-card:hover {
+  transform: translateY(-5px);
+  border-color: #ff9d00;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 60, 0, 0.2);
+}
+
+/* Subtle fire gradient bar at the top of every card */
+.sgipc-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, #ff2a00, #ff9d00, #ffea00);
+  opacity: 0.7;
+}
+
+/* Internal Card Padding */
+.card-content {
+  padding: 25px 25px 15px 25px;
+  flex-grow: 1; /* Pushes footer to the bottom */
+}
+
+/* Header/Date area inside card */
+.card-date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ff9d00; /* Fire orange text for dates */
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Shared Icon Style */
+.icon-small {
+  width: 16px;
+  height: 16px;
+}
+
+.card-heading {
+  color: #ffffff;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.card-desc {
+  color: #a0aabf;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.card-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+}
+
+/* ================= STATUS BADGES ================= */
+.card-status {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-completed {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #a0aabf;
+}
+
+.status-upcoming {
+  background-color: rgba(255, 157, 0, 0.15);
+  color: #ff9d00;
+  border: 1px solid rgba(255, 157, 0, 0.3);
+}
+
+.status-ongoing {
+  background-color: rgba(0, 200, 83, 0.15);
+  color: #00c853;
+  border: 1px solid rgba(0, 200, 83, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Pulsing dot for Ongoing events */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00c853;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(0, 200, 83, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
+}
+
+/* ================= CARD FOOTER & BUTTONS ================= */
+.card-footer {
+  padding: 15px 25px 25px 25px;
+}
+
+/* Solid Fire Button */
+.btn-fire {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(to right, #ff2a00, #ff9d00);
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: opacity 0.2s ease;
+}
+
+.btn-fire:hover {
+  opacity: 0.9;
+}
+
+/* Outlined Fire Button (For Secondary Actions) */
+.btn-fire-outline {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+  color: #ff9d00;
+  padding: 12px;
+  border: 1px solid #ff9d00;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.btn-fire-outline:hover {
+  background-color: rgba(255, 157, 0, 0.1);
+}
+
+/* Section-level action buttons */
+.section-action {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.section-btn {
+  width: auto;
+  min-width: 220px;
+  padding: 12px 22px;
+}
+
+
+
+
+/* ================= EXECUTIVE PANEL STYLES ================= */
+.executive-section {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05); /* Subtle separator */
+}
+
+/* Centered Header for Executive Panel */
+.section-header-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fiery Icon Glow */
+.icon-glow-wrapper {
+  background: rgba(255, 42, 0, 0.1);
+  padding: 15px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(255, 157, 0, 0.2);
+  border: 1px solid rgba(255, 157, 0, 0.3);
+}
+
+.panel-icon {
+  width: 32px;
+  height: 32px;
+  color: #ff9d00;
+}
+
+.section-subtitle {
+  color: #a0aabf;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+/* Category Headings (Advisors vs Executives) */
+.role-category {
+  margin-bottom: 50px;
+}
+
+.category-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.fire-line-inline {
+  flex-grow: 1;
+  height: 2px;
+  background: linear-gradient(to right, #ff2a00, transparent);
+  opacity: 0.5;
+}
+
+/* Executive Grid Setup */
+.executive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+}
+
+/* Individual Profile Card */
+.exec-card {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.exec-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Image Wrapper with Fiery Border */
+.exec-img-wrapper {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  padding: 4px;
+  background: linear-gradient(135deg, #2a2e45, #0c1021); /* Default dark border */
+  margin-bottom: 20px;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.exec-card:hover .exec-img-wrapper {
+  /* On hover, the border becomes a glowing fire gradient */
+  background: linear-gradient(135deg, #ff2a00, #ffea00);
+  box-shadow: 0 10px 25px rgba(255, 60, 0, 0.4);
+}
+
+/* Actual Profile Image */
+.exec-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px; /* Slightly smaller than wrapper to show border */
+  background-color: #1a1e36; /* Fallback color if image is missing */
+}
+
+/* Name and Role */
+.exec-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.exec-name {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.exec-role {
+  color: #ff9d00;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

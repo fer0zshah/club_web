@@ -23,7 +23,7 @@
     <nav class="nav-links" id="navMenu">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">About <span class="dropdown-arrow">&#9662;</span></a></li>
+        <li><a href="about.html" id="aboutNavLink">About <span class="dropdown-arrow">&#9662;</span></a></li>
         <li><a href="#">Events</a></li>
         <li><a href="#">Contest <span class="dropdown-arrow">&#9662;</span></a></li>
         <li><a href="#">Training <span class="dropdown-arrow">&#9662;</span></a></li>
@@ -55,42 +55,220 @@
     </div>
   </header>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const hamburger = document.getElementById('hamburger');
-      const navMenu = document.getElementById('navMenu');
-      const navLinks = navMenu.querySelectorAll('a');
-
-      // Toggle menu on hamburger click
-      hamburger.addEventListener('click', function(e) {
-        e.stopPropagation();
-        navMenu.classList.toggle('active');
-        hamburger.classList.toggle('active');
-      });
-
-      // Close menu when a nav link is clicked
-      navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          navMenu.classList.remove('active');
-          hamburger.classList.remove('active');
-        });
-      });
-
-      // Close menu when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!e.target.closest('.navbar')) {
-          navMenu.classList.remove('active');
-          hamburger.classList.remove('active');
-        }
-      });
-    });
-  </script>
-  <main>
+  <script src="home.js"></script>
+ 
     <section class="hero">
       <div class="hero-content">
         <h1>Welcome to <br> <span class="highlight">SGIPC</span></h1>
         <a href="#" class="hero-register-btn">Register Now!! &rarr;</a>
       </div>
+    </section>
+
+  <main class="main-content">
+    
+    <section class="event-section">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Programming Contests</h2>
+        <div class="fire-underline"></div>
+      </div>
+
+      <div class="card-grid">
+        <div class="sgipc-card ongoing-card">
+          <div class="card-status status-ongoing">
+            <span class="pulse-dot"></span> Ongoing
+          </div>
+          <div class="card-content">
+            <div class="card-date">
+              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Today
+            </div>
+            <h3 class="card-heading">SGIPC Intra-University Team Selection</h3>
+            <p class="card-desc">The ultimate programming showdown to select our regional teams. Join now and prove your algorithmic skills!</p>
+            <div class="card-location">
+              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Lab 4 & Lab 3, 7th Floor
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn-fire">Join Contest</a>
+          </div>
+        </div>
+
+        <div class="sgipc-card">
+          <div class="card-status status-upcoming">Upcoming</div>
+          <div class="card-content">
+            <div class="card-date">
+              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              25 May
+            </div>
+            <h3 class="card-heading">Team Selection Programming Contest</h3>
+            <p class="card-desc">An exclusive contest to encourage and highlight top competitive programmers in the community.</p>
+            <div class="card-location">
+              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Online Platform
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn-fire-outline">View Details</a>
+          </div>
+        </div>
+
+        <div class="sgipc-card">
+          <div class="card-status status-completed">Completed</div>
+          <div class="card-content">
+            <div class="card-date">
+              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              16 Apr
+            </div>
+            <h3 class="card-heading">ICPC-JRC Individual Contest - 4</h3>
+            <p class="card-desc">Our fourth individual practice contest focusing on dynamic programming and graph algorithms.</p>
+            <div class="card-location">
+              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Lab 2, 7th Floor
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn-fire-outline">Standings</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-action">
+        <a href="#" class="btn-fire-outline section-btn">See More Contests</a>
+      </div>
+    </section>
+
+    <section class="event-section">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Workshops & Training</h2>
+        <div class="fire-underline"></div>
+      </div>
+
+      <div class="card-grid">
+        <div class="sgipc-card">
+          <div class="card-status status-upcoming">Upcoming</div>
+          <div class="card-content">
+            <div class="card-date">
+              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              02 Jun
+            </div>
+            <h3 class="card-heading">Advanced Graph Theory Bootcamp</h3>
+            <p class="card-desc">A 3-day intensive workshop covering Dijkstra, Bellman-Ford, and Network Flow algorithms.</p>
+            <div class="card-location">
+              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Seminar Room, 8th Floor
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn-fire">Register Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-action">
+        <a href="#" class="btn-fire-outline section-btn">See More Workshops</a>
+      </div>
+    </section>
+    <section class="executive-section">
+      
+      <div class="section-header-centered">
+        <div class="icon-glow-wrapper">
+          <svg class="panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <h2 class="section-title">Executive Panel</h2>
+        <p class="section-subtitle">Meet the dedicated individuals leading SGIPC to new heights and fostering a culture of competitive programming excellence.</p>
+      </div>
+
+      <div class="role-category">
+        <h3 class="category-title">Honorable Advisors <span class="fire-line-inline"></span></h3>
+        
+        <div class="executive-grid">
+          <div class="exec-card">
+            <div class="exec-img-wrapper">
+              <img src="advisor_placeholder.jpg" alt="Advisor Name" class="exec-img">
+            </div>
+            <div class="exec-info">
+              <h4 class="exec-name">Kazi Saeed Alam, Asst. Professor</h4>
+              <p class="exec-role">Chief Advisor & Faculty Member</p>
+            </div>
+          </div>
+          
+          <div class="exec-card">
+            <div class="exec-img-wrapper">
+              <img src="advisor_placeholder2.jpg" alt="Advisor Name" class="exec-img">
+            </div>
+            <div class="exec-info">
+              <h4 class="exec-name">Ehsanul Karim Talha</h4>
+              <p class="exec-role">Advisor & Faculty Member</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="role-category">
+        <h3 class="category-title">Executive Committee <span class="fire-line-inline"></span></h3>
+        
+        <div class="executive-grid">
+          <div class="exec-card">
+            <div class="exec-img-wrapper">
+              <img src="president_placeholder.jpg" alt="President Name" class="exec-img">
+            </div>
+            <div class="exec-info">
+              <h4 class="exec-name">Niloy Das</h4>
+              <p class="exec-role">President</p>
+            </div>
+          </div>
+
+          <div class="exec-card">
+            <div class="exec-img-wrapper">
+              <img src="vp_placeholder.jpg" alt="VP Name" class="exec-img">
+            </div>
+            <div class="exec-info">
+              <h4 class="exec-name">Md Tanjimul Hasan</h4>
+              <p class="exec-role">Vice President</p>
+            </div>
+          </div>
+           <div class="exec-card">
+            <div class="exec-img-wrapper">
+              <img src="vp_placeholder.jpg" alt="VP Name" class="exec-img">
+            </div>
+            <div class="exec-info">
+              <h4 class="exec-name">Shah Md Khalil Ullah</h4>
+              <p class="exec-role">Vice President</p>
+            </div>
+          </div>
+
+          <div class="exec-card">
+            <div class="exec-img-wrapper">
+              <img src="gs_placeholder.jpg" alt="GS Name" class="exec-img">
+            </div>
+            <div class="exec-info">
+              <h4 class="exec-name">Khadimul Islam Mahi</h4>
+              <p class="exec-role">General Secretary</p>
+            </div>
+          </div>
+          
+          <div class="exec-card">
+            <div class="exec-img-wrapper">
+              <img src="treasurer_placeholder.jpg" alt="Treasurer Name" class="exec-img">
+            </div>
+            <div class="exec-info">
+              <h4 class="exec-name">Md Umar Faruk</h4>
+              <p class="exec-role">Treasurer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-action">
+        <a href="#" class="btn-fire-outline section-btn">See Full Executive Body</a>
+      </div>
+
     </section>
   </main>
 
