@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('navMenu');
   const aboutNavLink = document.getElementById('aboutNavLink');
+  const galleryNavLink = document.getElementById('galleryNavLink');
 
   if (!hamburger || !navMenu) {
     return;
@@ -37,6 +38,14 @@ document.addEventListener('DOMContentLoaded', function () {
     aboutNavLink.addEventListener('click', function (e) {
       e.preventDefault();
       window.location.href = 'about.html';
+    });
+  }
+
+  // Navigate to Gallery page from the Home navbar.
+  if (galleryNavLink) {
+    galleryNavLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = 'gallery.html';
     });
   }
 });
