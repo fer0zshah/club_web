@@ -8,6 +8,52 @@
 </head>
 <body>
 
+    <header class="navbar">
+    <div class="logo-container">
+      <img src="logo.png" alt="SGIPC Logo" class="logo-image">
+    </div>
+
+    <!-- Hamburger Menu -->
+    <button class="hamburger-menu" id="hamburger" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-links" id="navMenu">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="about.html" id="aboutNavLink">About <span class="dropdown-arrow">&#9662;</span></a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Contest <span class="dropdown-arrow">&#9662;</span></a></li>
+        <li><a href="#">Training <span class="dropdown-arrow">&#9662;</span></a></li>
+        <li><a href="gallery.html" id="galleryNavLink">Gallery</a></li>
+        <li><a href="#">Contacts</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="login.html" class="login-btn">
+        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+        </svg>
+        <span>Log In</span>
+      </a>
+      
+      <a href="register.html" class="register-btn">
+        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+        </svg>
+        <span>Register</span>
+      </a>
+
+      <button class="theme-toggle" aria-label="Toggle Dark Mode">
+        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+    </div>
+  </header>
   
   <main>
     <section class="register-container">
