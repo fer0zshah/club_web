@@ -1,0 +1,194 @@
+body {
+  background-color: #060814;
+  color: #e0e0e0;
+}
+
+.admin-container {
+  display: flex;
+  min-height: calc(100vh - 90px);
+}
+
+.admin-sidebar {
+  width: 250px;
+  background-color: #0c1021;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px 0;
+}
+
+.sidebar-menu {
+  list-style: none;
+}
+
+.sidebar-menu li a {
+  display: block;
+  padding: 15px 25px;
+  color: #b0b0b0;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-menu li a:hover, .sidebar-menu li a.active {
+  background-color: rgba(255, 157, 0, 0.1);
+  color: #ff9d00;
+  border-left-color: #ff9d00;
+}
+
+.admin-main {
+  flex: 1;
+  padding: 40px;
+}
+
+.admin-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-card {
+  background-color: #0c1021;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 800px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 12px;
+  background-color: #1a1e36;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: #ff9d00;
+  box-shadow: 0 0 0 2px rgba(255, 157, 0, 0.2);
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #ff2a00, #ff9d00);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btn-submit:hover {
+  opacity: 0.9;
+}
+
+/* ================= ADMIN TABLES (Manage Users/Events) ================= */
+.admin-table-container {
+  background-color: #0c1021;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.admin-table th, .admin-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  white-space: nowrap;
+}
+
+.admin-table th {
+  background-color: rgba(255, 255, 255, 0.02);
+  color: #888;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.admin-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.admin-table td {
+  color: #e0e0e0;
+  font-size: 0.95rem;
+}
+
+/* Status Badges */
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-active, .badge-admin {
+  background: rgba(34, 197, 94, 0.1);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.badge-upcoming, .badge-member {
+  background: rgba(255, 157, 0, 0.1);
+  color: #ff9d00;
+  border: 1px solid rgba(255, 157, 0, 0.2);
+}
+
+.badge-completed, .badge-banned {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* Action Buttons within Table */
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  margin-right: 12px;
+  transition: color 0.2s ease;
+  font-size: 1rem;
+}
+
+.action-btn:hover {
+  color: #ffffff;
+}
+
+.action-edit:hover {
+  color: #60a5fa;
+}
+
+.action-delete:hover {
+  color: #f87171;
+}

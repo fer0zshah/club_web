@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Users - SGIPC Admin</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo-container">
+      <img src="logo.png" alt="SGIPC Logo" class="logo-image" style="height: 60px;">
+    </div>
+    <div style="color: white; font-size: 1.2rem; font-weight: bold;">Executive Panel</div>
+    <div class="nav-actions">
+      <a href="home.html" class="login-btn">Back to Site</a>
+    </div>
+  </header>
+
+  <div class="admin-container">
+    <aside class="admin-sidebar">
+      <ul class="sidebar-menu">
+        <li><a href="admin.html">Create Contest</a></li>
+        <li><a href="admin-workshop.html">Create Workshop</a></li>
+        <li><a href="admin-manage-events.html">Manage Events</a></li>
+        <li><a href="admin-manage-users.html" class="active">Manage Users</a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1 style="color: white; font-size: 2rem;">Manage Users</h1>
+        <p style="color: #888;">View and manage registered members, moderators, and executives.</p>
+      </div>
+
+      <div class="admin-table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Batch</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#USA01</td>
+              <td>Niloy Das</td>
+              <td>president@sgipc.edu</td>
+              <td>16</td>
+              <td><span class="badge badge-admin">Executive</span></td>
+              <td>
+                <button class="action-btn action-edit" title="Edit">&#9998;</button>
+              </td>
+            </tr>
+            <tr>
+              <td>#USA45</td>
+              <td>John Doe</td>
+              <td>johndoe@gmail.com</td>
+              <td>18</td>
+              <td><span class="badge badge-member">Member</span></td>
+              <td>
+                <button class="action-btn action-edit" title="Edit">&#9998;</button>
+                <button class="action-btn action-delete" title="Ban User">&#128683;</button>
+              </td>
+            </tr>
+            <tr>
+              <td>#USA99</td>
+              <td>Alice Johnson</td>
+              <td>alice.j@yahoo.com</td>
+              <td>19</td>
+              <td><span class="badge badge-banned">Banned</span></td>
+              <td>
+                <button class="action-btn action-edit" title="Edit">&#9998;</button>
+                <button class="action-btn action-delete" title="Delete Account">&#128465;</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>
