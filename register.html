@@ -61,24 +61,24 @@
         <h2>Join SGIPC</h2>
         <p class="register-subtitle">Create your account to get started</p>
         
-        <form class="register-form">
+        <form class="register-form" action="register.php" method="POST">
           <div class="form-row">
                 <div class="form-group">
             <label for="roll">Roll Number</label>
-            <input type="roll" id="roll" name="roll" placeholder="Your roll number">
+            <input type="text" id="roll" name="roll_number" required placeholder="Your roll number">
           </div>
                       <div class="form-group">
               <label for="dept">Department</label>
-              <input type="dept" id="dept" name="dept" required placeholder="Your department">
+              <input type="text" id="dept" name="department" required placeholder="Your department">
             </div>
             <div class="form-group">
               <label for="firstname">First Name</label>
-              <input type="text" id="firstname" name="firstname" required placeholder="Your first name">
+              <input type="text" id="firstname" name="first_name" required placeholder="Your first name">
             </div>
 
             <div class="form-group">
               <label for="lastname">Last Name</label>
-              <input type="text" id="lastname" name="lastname" required placeholder="Your last name">
+              <input type="text" id="lastname" name="last_name" required placeholder="Your last name">
             </div>
           </div>
 
@@ -99,7 +99,7 @@
 
           <div class="form-group">
             <label for="confirm-password">Confirm Password</label>
-            <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+            <input type="password" id="confirm-password" name="confirm_password" required placeholder="Confirm your password">
           </div>
 
           <div class="form-options">
@@ -124,7 +124,49 @@
     </section>
   </main>
 
-  
+  <!-- Success/Error Modal -->
+  <div id="statusModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+    <div class="modal-content" style="background:#111827; padding:32px; border-radius:16px; max-width:400px; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,.35); color:#fff; width:90%;">
+      <h2 id="modalTitle" style="margin-top:0;">Notice</h2>
+      <p id="modalMessage">Registration status.</p>
+      <button id="modalBtn" style="background:#2563eb; color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-size:16px; margin-top:20px; width: 100%;">Close</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const status = urlParams.get('status');
+      const msg = urlParams.get('msg');
+      
+      if (status) {
+        const modal = document.getElementById('statusModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const modalBtn = document.getElementById('modalBtn');
+        
+        modal.style.display = 'flex'; // Use flex to center the content
+        
+        if (status === 'success') {
+          modalTitle.textContent = 'Account created';
+          modalTitle.style.color = '#4ade80'; // Success green
+          modalMessage.textContent = 'Your account was successfully created!';
+          modalBtn.textContent = 'Go to Login';
+          modalBtn.onclick = () => window.location.href = 'login.html';
+        } else if (status === 'error') {
+          modalTitle.textContent = 'Registration Failed';
+          modalTitle.style.color = '#ef4444'; // Error red
+          modalMessage.textContent = msg || 'An error occurred during registration.';
+          modalBtn.textContent = 'Try Again';
+          modalBtn.onclick = () => {
+             modal.style.display = 'none';
+             // Remove URL params
+             window.history.replaceState({}, document.title, window.location.pathname);
+          };
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>

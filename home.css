@@ -706,3 +706,20 @@ transition: all 0.3s ease-in-out;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+/* Example of how you might group them in your CSS */
+.card-date, 
+.card-location, 
+.card-participants {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #a0aec0; /* Adjust to match your specific grey/white hex code */
+    margin-bottom: 8px; /* Adjust spacing as needed */
+}
+
+/* Optional: Make the number stand out slightly */
+.participant-number {
+    font-weight: bold;
+    color: #ffffff; /* Or your theme's orange accent color */
+}

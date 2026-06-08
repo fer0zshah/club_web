@@ -61,10 +61,10 @@
         <h2>Welcome Back</h2>
         <p class="login-subtitle">Log in to your SGIPC account</p>
         
-        <form class="login-form">
+        <form class="login-form" action="login.php" method="POST">
           <div class="form-group">
             <label for="email">Roll Number</label>
-            <input type="email" id="email" name="email" required placeholder="Enter your email">
+            <input type="text" id="email" name="roll_number" required placeholder="Enter your roll number">
           </div>
 
           <div class="form-group">
@@ -125,17 +125,35 @@
         }
       });
 
-      // Login form submission
-      const loginForm = document.querySelector('.login-form');
-      loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        console.log('Login attempt:', { email, password });
-        // Add your login logic here
-      });
+      // Handle login error modal
+      const urlParams = new URLSearchParams(window.location.search);
+      const status = urlParams.get('status');
+      const msg = urlParams.get('msg');
+      
+      if (status === 'error') {
+        const modal = document.getElementById('statusModal');
+        const modalMessage = document.getElementById('modalMessage');
+        const modalBtn = document.getElementById('modalBtn');
+        
+        modal.style.display = 'flex';
+        modalMessage.textContent = msg || 'An error occurred during login.';
+        modalBtn.onclick = () => {
+           modal.style.display = 'none';
+           window.history.replaceState({}, document.title, window.location.pathname);
+        };
+      }
+
     });
   </script>
+
+  <!-- Error Modal -->
+  <div id="statusModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); align-items: center; justify-content: center;">
+    <div class="modal-content" style="background:#111827; padding:32px; border-radius:16px; max-width:400px; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,.35); color:#fff; width:90%;">
+      <h2 id="modalTitle" style="margin-top:0; color:#ef4444;">Login Failed</h2>
+      <p id="modalMessage">Error message.</p>
+      <button id="modalBtn" style="background:#2563eb; color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-size:16px; margin-top:20px; width: 100%;">Try Again</button>
+    </div>
+  </div>
 
 </body>
 </html>
