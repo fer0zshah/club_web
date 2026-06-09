@@ -42,6 +42,6 @@ if (in_array($user['role'], $adminRoles)) {
 } else {
     // Regular user, redirect to home page
     $_SESSION['is_admin'] = false;
-    header('Location: home.html');
+    header('Location: home.php');
 }
 exit;
