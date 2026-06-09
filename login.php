@@ -33,11 +33,12 @@ $_SESSION['user_name'] = trim($user['first_name'] . ' ' . $user['last_name']);
 $_SESSION['user_email'] = $user['email'];
 $_SESSION['user_role'] = $user['role']; // Save role in session for page protection later
 
+$adminRoles = ['admin', 'President', 'VP', 'GS', 'Treasurer']; // Define which roles are considered admin-level
 // CHANGES HERE: Cleaned up and checking the 'role' value directly
-if ($user['role'] === 'admin') {
+if (in_array($user['role'], $adminRoles)) {
     // User is an admin, redirect to admin dashboard
     $_SESSION['is_admin'] = true;
-    header('Location: admin.html'); 
+    header('Location: admin.php'); 
 } else {
     // Regular user, redirect to home page
     $_SESSION['is_admin'] = false;

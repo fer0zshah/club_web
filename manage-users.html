@@ -1,113 +1,130 @@
-<?php
-session_start();
-require_once __DIR__ . '/db.php';
-
-// Security Check: Only logged-in Admins can view this page
-if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
-    header('Location: login.html');
-    exit;
-}
-
-// Fetch all registered users from the database
-$query = "SELECT id, roll_number, department, first_name, last_name, email, role FROM users ORDER BY id ASC";
-$result = $connection->query($query);
-?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manage Users - SGIPC Admin</title>
-  <link rel="stylesheet" href="home.css">
-  <link rel="stylesheet" href="admin.css">
-  <style>
-    /* Styling to make our new role dropdown blend perfectly into your dark dashboard */
-    .role-dropdown {
-      background: #1f2937;
-      color: white;
-      border: 1px solid #374151;
-      padding: 6px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      outline: none;
-    }
-    .role-dropdown:focus {
-      border-color: #2563eb;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users | SGIPC Admin</title>
+    <link rel="stylesheet" href="manage-users.css">
 </head>
+
 <body>
+    <div class="admin-container">
+        <header class="page-header">
+            <a href="admin.php" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back to Dashboard
+            </a>
+            <h1>Manage Users</h1>
+            <p class="subtitle">View registered members, update roles, and manage account permissions.</p>
+        </header>
 
-  <header class="navbar">
-    <div class="logo-container">
-      <img src="logo.png" alt="SGIPC Logo" class="logo-image" style="height: 60px;">
+        <main class="table-card">
+            <div class="table-responsive">
+                <table class="user-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Roll Number</th>
+                            <th>Dept</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        <tr>
+                            <td colspan="8" class="loading-text">Loading registered students...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
     </div>
-    <div style="color: white; font-size: 1.2rem; font-weight: bold;">Executive Panel</div>
-    <div class="nav-actions">
-      <a href="home.html" class="login-btn">Back to Site</a>
-    </div>
-  </header>
 
-  <div class="admin-container">
-    <aside class="admin-sidebar">
-      <ul class="sidebar-menu">
-        <li><a href="admin.html">Create Contest</a></li>
-        <li><a href="admin-workshop.html">Create Workshop</a></li>
-        <li><a href="admin-manage-events.html">Manage Events</a></li>
-        <li><a href="admin-manage-users.php" class="active">Manage Users</a></li>
-      </ul>
-    </aside>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('get-users.php')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('userTableBody');
+                    tbody.innerHTML = ''; // Clear out the loading indicator
 
-    <main class="admin-main">
-      <div class="admin-header">
-        <h1 style="color: white; font-size: 2rem;">Manage Users</h1>
-        <p style="color: #888;">View, edit, or remove members and update their roles.</p>
-      </div>
+                    if (data.error) {
+                        tbody.innerHTML = `<tr><td colspan="8" class="error-text">${data.error}</td></tr>`;
+                        return;
+                    }
 
-      <div class="admin-table-container">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Roll Number</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role Permissions</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php if ($result && $result->num_rows > 0): ?>
-              <?php while ($row = $result->fetch_assoc()): ?>
-                <tr>
-                  <td>#<?php echo htmlspecialchars($row['id']); ?></td>
-                  <td style="color: #4ade80; font-weight: bold;"><?php echo htmlspecialchars($row['roll_number']); ?></td>
-                  <td><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['last_name']); ?></td>
-                  <td><?php echo htmlspecialchars($row['email']); ?></td>
-                  <td>
-                    <form action="update-user-role.php" method="POST" style="margin:0;">
-                      <input type="hidden" name="user_id" value="<?php echo $row['id']; ?>">
-                      <select name="new_role" class="role-dropdown" onchange="this.form.submit()">
-                        <option value="student" <?php echo ($row['role'] === 'student') ? 'selected' : ''; ?>>Student</option>
-                        <option value="admin" <?php echo ($row['role'] === 'admin') ? 'selected' : ''; ?>>Admin</option>
-                      </select>
-                    </form>
-                  </td>
-                  <td>
-                    <button class="action-btn action-delete" title="Delete User" onclick="if(confirm('Are you sure you want to remove this user?')) { window.location.href='delete-user.php?id=<?php echo $row['id']; ?>'; }">&#128465;</button>
-                  </td>
-                </tr>
-              <?php endwhile; ?>
-            <?php else: ?>
-              <tr>
-                <td colspan="6" style="text-align: center; color: #888; padding: 20px;">No registered users found.</td>
-              </tr>
-            <?php endif; ?>
-          </tbody>
-        </table>
-      </div>
-    </main>
-  </div>
+                    if (data.length === 0) {
+                        tbody.innerHTML = `<tr><td colspan="8" class="loading-text">No registered users found.</td></tr>`;
+                        return;
+                    }
 
+                    // Loop through data rows and build the table elements dynamically
+                    data.forEach(user => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${user.id}</td>
+                            <td class="user-name">${user.first_name} ${user.last_name}</td>
+                            <td>${user.roll_number}</td>
+                            <td class="text-uppercase">${user.department}</td>
+                            <td>${user.email}</td>
+                            <td>${user.phone}</td>
+                            <td>
+                       <select class="role-dropdown" onchange="updateRole(${user.id}, this.value)">
+                            <option value="student" ${user.role === 'student' ? 'selected' : ''}>Student</option>
+                            <option value="admin" ${user.role === 'admin' ? 'selected' : ''}>Admin</option>
+                            <option value="President" ${user.role === 'President' ? 'selected' : ''}>President</option>
+                            <option value="VP" ${user.role === 'VP' ? 'selected' : ''}>VP</option>
+                            <option value="GS" ${user.role === 'GS' ? 'selected' : ''}>GS</option>
+                            <option value="Treasurer" ${user.role === 'Treasurer' ? 'selected' : ''}>Treasurer</option>
+                        </select>
+                            </td>
+                            <td>
+                                <button class="btn-action btn-delete" onclick="deleteUser(${user.id})">Delete</button>
+                            </td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch(err => {
+                    document.getElementById('userTableBody').innerHTML =
+                        `<tr><td colspan="8" class="error-text">Failed to fetch system resources.</td></tr>`;
+                });
+        });
+
+        function updateRole(userId, newRole) {
+            fetch('update-user-role.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: userId, role: newRole })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log(`User ${userId} successfully updated to ${newRole}`);
+                    } else {
+                        alert('Failed to update role: ' + data.error);
+                    }
+                })
+                .catch(err => {
+                    alert('Network error occurred while updating role.');
+                });
+        }
+
+        function deleteUser(userId) {
+            if (confirm(`Are you sure you want to remove user ID ${userId}?`)) {
+                // You can point this to a delete endpoint later if needed!
+                console.log('Deleting user:', userId);
+            }
+        }
+    </script>
 </body>
+
 </html>
