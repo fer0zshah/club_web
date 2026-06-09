@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Contest | SGIPC Admin</title>
+    <title>Create Workshop | SGIPC Admin</title>
     <link rel="stylesheet" href="create-contest.css">
+    <style>
+        /* Clean style for the dynamic success message box */
+        .alert-success {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+            font-weight: 500;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="admin-container">
@@ -13,65 +27,98 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 Back to Dashboard
             </a>
-            <h1>Create New Workshop</h1>
-            <p class="subtitle">Set up a new training session for the platform.</p>
+            <h1>Create New Workshop / Training</h1>
+            <p class="subtitle">Schedule a educational boot camp, tech talk, or training session.</p>
         </header>
 
         <main class="form-card">
-            <form action="process_workshop.php" method="POST" class="workshop-form">
+            <div id="successAlert" class="alert-success"></div>
+
+            <form id="workshopForm" class="contest-form">
                 
                 <div class="form-group full-width">
-                    <label for="workshop_title">Workshop Title</label>
-                    <input type="text" id="workshop_title" name="workshop_title" placeholder="e.g., SGIPC Intra-University Team Selection" required>
+                    <label for="title">Workshop Title</label>
+                    <input type="text" id="title" name="title" placeholder="e.g., Introduction to Graph Algorithms & BFS/DFS" required>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="workshop_date">Date</label>
-                        <input type="date" id="workshop_date" name="workshop_date" required>
+                        <label for="mentor_name">Instructor / Mentor Name</label>
+                        <input type="text" id="mentor_name" name="mentor_name" placeholder="e.g., John Doe (Alumni, Codeforces Red)" required>
                     </div>
                     <div class="form-group">
-                        <label for="start_time">Start Time</label>
-                        <input type="time" id="start_time" name="start_time" required>
+                        <label for="location">Location / Venue</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., Computer Lab 3 (7th Floor)" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="duration">Duration (Hours)</label>
-                        <input type="number" id="duration" name="duration" min="1" max="24" step="0.5" placeholder="e.g., 2.5" required>
+                        <label for="start_time">Start Date & Time</label>
+                        <input type="datetime-local" id="start_time" name="start_time" required>
                     </div>
                     <div class="form-group">
-                        <label for="location">Location / Platform</label>
-                        <input type="text" id="location" name="location" placeholder="e.g., Lab 4 & 3 or Codeforces" required>
+                        <label for="end_time">End Date & Time</label>
+                        <input type="datetime-local" id="end_time" name="end_time" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="materials_link">Study Resources / Drive Link (Optional)</label>
+                        <input type="url" id="materials_link" name="materials_link" placeholder="https://drive.google.com/drive/...">
+                    </div>
+                    <div class="form-group">
+                        <label for="max_participants">Max Participants / Lab Seat Limit (Optional)</label>
+                        <input type="number" id="max_participants" name="max_participants" min="1" placeholder="e.g., 40">
                     </div>
                 </div>
 
                 <div class="form-group full-width">
-                    <label for="description">Workshop Description</label>
-                    <textarea id="description" name="description" rows="4" placeholder="Briefly describe the rules, eligibility, and topics covered..." required></textarea>
-                </div>
-                    <div class="form-group full-width">
-                    <label for="Instructor">Instructor</label>
-                    <input type="text" id="Instructor" name="Instructor" placeholder="e.g., Dr. X" required>
-                </div>
-
-                <div class="form-group full-width">
-                    <label for="status">Initial Status</label>
-                    <select id="status" name="status">
-                        <option value="upcoming">Upcoming</option>
-                        <option value="ongoing">Ongoing</option>
-                        <option value="completed">Completed</option>
-                    </select>
+                    <label for="description">Workshop / Topic Description</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Outline the prerequisites, target audience, schedule details, and what frameworks/languages will be taught..." required></textarea>
                 </div>
 
                 <div class="form-actions">
                     <button type="button" class="btn-secondary" onclick="window.location.href='admin.php'">Cancel</button>
-                    <button type="submit" class="btn-primary">Publish Workshop</button>
+                    <button type="submit" class="btn-primary">Schedule Workshop</button>
                 </div>
-
             </form>
         </main>
     </div>
+
+    <script>
+        document.getElementById('workshopForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Stop page from redirecting/reloading
+
+            const formData = new FormData(this);
+            const alertBox = document.getElementById('successAlert');
+
+            fetch('process_workshop.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.status === 'success') {
+                    // Show custom success banner
+                    alertBox.textContent = data.message;
+                    alertBox.style.display = 'block';
+                    
+                    // Clear the form fields for the next entries
+                    document.getElementById('workshopForm').reset();
+                    
+                    // Smoothly scroll to the top so they see the success text
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again.');
+            });
+        });
+    </script>
 </body>
 </html>

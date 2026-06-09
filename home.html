@@ -33,7 +33,10 @@
         <li><a href="#">Contacts</a></li>
       </ul>
     </nav>
+      <div class="nav-actions" id="navActions">
+  </div>
 
+  <input type="file" id="dpFileInput" accept="image/*" style="display: none;" onchange="handleDpUpload(this)">
     <div class="nav-actions">
       <a href="login.html" class="login-btn">
         <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none">
@@ -61,202 +64,40 @@
   </header>
 
   <script src="home.js"></script>
-
+  <script src="home-events.js" defer></script>
 
 
   <main class="main-content">
 
     <section class="event-section">
-      <div class="section-title-wrapper">
-        <h2 class="section-title">Programming Contests</h2>
-        <div class="fire-underline"></div>
-      </div>
+  <div class="section-title-wrapper">
+    <h2 class="section-title">Programming Contests</h2>
+    <div class="fire-underline"></div>
+  </div>
 
-      <div class="card-grid">
-        <div class="sgipc-card ongoing-card">
-          <div class="card-status status-ongoing">
-            <span class="pulse-dot"></span> Ongoing
-          </div>
-          <div class="card-content">
-            <div class="card-date">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              Today
-            </div>
-            <h3 class="card-heading">SGIPC Intra-University Team Selection</h3>
-            <p class="card-desc">The ultimate programming showdown to select our regional teams. Join now and prove your
-              algorithmic skills!</p>
-            <div class="card-location">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              Lab 4 & Lab 3, 7th Floor
-            </div>
+  <div class="card-grid" id="contestCardGrid">
+      <p style="color: #ccc; text-align: center; width: 100%;">Loading contests...</p>
+  </div>
 
-            <div class="card-participants">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-              <span class="participant-number">0</span> Participating
-            </div>
+  <div class="section-action">
+    <a href="all-contests.html" class="btn-fire-outline section-btn">See More Contests</a>
+  </div>
+</section>
 
+<section class="event-section">
+  <div class="section-title-wrapper">
+    <h2 class="section-title">Workshops & Trainings</h2>
+    <div class="fire-underline"></div>
+  </div>
 
-          </div>
-
-
-
-          <div class="card-footer">
-            <a href="event-details.html" class="btn-fire">Join Contest</a>
-          </div>
-        </div>
-
-        <div class="sgipc-card">
-          <div class="card-status status-upcoming">Upcoming</div>
-          <div class="card-content">
-            <div class="card-date">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              25 May
-            </div>
-            <h3 class="card-heading">Team Selection Programming Contest</h3>
-            <p class="card-desc">An exclusive contest to encourage and highlight top competitive programmers in the
-              community.</p>
-            <div class="card-location">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              Online Platform
-            </div>
-              
-            <div class="card-participants">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-              <span class="participant-number">0</span> Participants
-            </div>
-
-
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn-fire-outline">View Details</a>
-          </div>
-        </div>
-
-        <div class="sgipc-card">
-          <div class="card-status status-completed">Completed</div>
-          <div class="card-content">
-            <div class="card-date">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              16 Apr
-            </div>
-            <h3 class="card-heading">ICPC-JRC Individual Contest - 4</h3>
-            <p class="card-desc">Our fourth individual practice contest focusing on dynamic programming and graph
-              algorithms.</p>
-            <div class="card-location">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              Lab 2, 7th Floor
-            </div>
-            
-            <div class="card-participants">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-              <span class="participant-number">0</span> Participating
-            </div>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn-fire-outline">Standings</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-action">
-        <a href="#" class="btn-fire-outline section-btn">See More Contests</a>
-      </div>
-    </section>
-
-    <section class="event-section">
-      <div class="section-title-wrapper">
-        <h2 class="section-title">Workshops & Training</h2>
-        <div class="fire-underline"></div>
-      </div>
-
-      <div class="card-grid">
-        <div class="sgipc-card">
-          <div class="card-status status-upcoming">Upcoming</div>
-          <div class="card-content">
-            <div class="card-date">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              02 Jun
-            </div>
-            <h3 class="card-heading">Advanced Graph Theory Bootcamp</h3>
-            <p class="card-desc">A 3-day intensive workshop covering Dijkstra, Bellman-Ford, and Network Flow
-              algorithms.</p>
-            <div class="card-location">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              Seminar Room, 8th Floor
-            </div>
-            
-            <div class="card-participants">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-              <span class="participant-number">0</span> Participants
-            </div>
-          </div>
-          <div class="card-footer">
-            <a href="workshop-details.html" class="btn-fire">Register Now</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-action">
-        <a href="#" class="btn-fire-outline section-btn">See More Workshops</a>
-      </div>
-    </section>
-    <section class="executive-section">
+  <div class="card-grid" id="workshopCardGrid">
+      <p style="color: #ccc; text-align: center; width: 100%;">Loading workshops...</p>
+  </div>
+    <div class="section-action">
+    <a href="all-workshops.html" class="btn-fire-outline section-btn">See More Workshops</a>
+  </div>
+</section>  
+  <section class="executive-section">
 
       <div class="section-header-centered">
         <div class="icon-glow-wrapper">
