@@ -26,7 +26,7 @@ $user = $result ? $result->fetch_assoc() : null;
 if (!$user || !password_verify($password, $user['password_hash'])) {
     header('Location: login.html?status=error&msg=' . urlencode('Invalid roll number or password.'));
     exit;
-}
+} 
 
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['user_name'] = trim($user['first_name'] . ' ' . $user['last_name']);

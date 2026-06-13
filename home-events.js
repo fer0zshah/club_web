@@ -51,6 +51,7 @@ function renderHomeContests() {
                                 <line x1="8" y1="2" x2="8" y2="6"></line>
                                 <line x1="3" y1="10" x2="21" y2="10"></line>
                             </svg>
+                            <br><br> <br>
                             <span>${displayDate} &nbsp;•&nbsp; <span style="color: #ff6b00;">${displayTime}</span></span>
                         </div>
                         <div class="card-status ${statusBadgeClass}" style="text-transform: uppercase; font-size: 0.75rem; font-weight: bold; padding: 4px 10px; border-radius: 20px;">
@@ -140,6 +141,8 @@ function renderHomeWorkshops() {
                                 <line x1="8" y1="2" x2="8" y2="6"></line>
                                 <line x1="3" y1="10" x2="21" y2="10"></line>
                             </svg>
+                            <br><br> <br>
+            
                             <span>${displayDate} &nbsp;•&nbsp; <span style="color: #4CAF50;">${displayTime}</span></span>
                         </div>
                         <div class="card-status ${statusBadgeClass}" style="text-transform: uppercase; font-size: 0.75rem; font-weight: bold; padding: 4px 10px; border-radius: 20px;">
